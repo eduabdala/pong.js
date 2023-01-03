@@ -9,7 +9,7 @@ let velocidadeXBolinha = 6;
 let velocidadeYBolinha = 6;
 
 function setup() {
-    creatcanvas (600, 400);
+    createCanvas (600, 400);
 }
 
 function draw() {
@@ -20,7 +20,7 @@ function draw() {
 }
 
 function mostraBolinha () {
-    circle(xBolinha, yBolinha, diametro)
+    circle (xBolinha, yBolinha, diametro);
 }
 
 function movimentoBolinha () {
