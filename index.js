@@ -8,6 +8,12 @@ let raio = diametro /2;
 let velocidadeXBolinha = 6;
 let velocidadeYBolinha = 6;
 
+//variaveis da raquete
+let xRaquete = 5;
+let yRaquete = 150;
+let comprimentoRaquete = 10;
+let alturaRaquete = 90;
+
 function setup() {
     createCanvas (600, 400);
 }
@@ -17,8 +23,12 @@ function draw() {
     mostraBolinha();
     movimentoBolinha();
     verificaColisaoBorda();
+    mostrarRaquete();
+    movimentoRaquete();
+    verificaColisaoRaquete();
 }
 
+//funcoes da bolinha
 function mostraBolinha () {
     circle (xBolinha, yBolinha, diametro);
 }
@@ -37,4 +47,26 @@ function verificaColisaoBorda () {
         yBolinha - raio < 0){
         velocidadeYBolinha *= -1;
         }//colisao de Y
+}
+
+//funcoes da raquete
+function mostrarRaquete(){
+    rect (xRaquete, yRaquete, comprimentoRaquete, alturaRaquete);
+}
+
+function movimentoRaquete(){
+    if (keyIsDown(UP_ARROW)){
+        yRaquete -= 10;
+    }
+    if (keyIsDown(DOWN_ARROW)){
+        yRaquete -= -10;
+    }
+}
+
+function verificaColisaoRaquete(){
+    if (xBolinha - raio < xRaquete + comprimentoRaquete && 
+        yBolinha - raio < yRaquete + alturaRaquete &&
+        yBolinha + raio > yRaquete){
+            velocidadeXBolinha *= -1;
+        }
 }
